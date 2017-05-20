@@ -5,7 +5,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>CRUD Project</title>
 </head>
 <body>
     <div class="main" ng-controller="mainCtrl">
@@ -25,12 +25,20 @@
             </thead>
             <tbody>
                 <tr ng-repeat="key in user.tasks">
-                    <td>{{key.id}}</td>
+                    <td>{{$index + 1}}</td>
                     <td>{{key.description}}</td>
-                    <td>{{key.isDone}}</td>
+                    <td><input type="checkbox" ng-model="key.isDone" ng-click="isDone(key)">
+                        {{key.isDone ? 'Done' : 'In Progress'}}
+                    </td>
+                    <td><input type="button" value="Edit" ng-click="edit(key)"></td>
+                    <td><input type="button" value="Delete" ng-click="removeTask(key)"></td>
                 </tr>
             </tbody>
         </table>
+        <div class="edit-block" ng-if="toggle">
+            <input type="text" ng-model="editTask.description">
+            <input type="button" value="save" ng-click="updateTask()">
+        </div>
     </div>
     <script src="src/angular.min.js"></script>
 

@@ -46,6 +46,24 @@ app.post('/add-task', function (req, res) {
 	res.send(200);
 });
 
+app.post('/update-task', function (req, res) {
+	connection.query('UPDATE Tasks SET description = ?, isDone = ? WHERE id = ?',
+		[req.body.description, req.body.isDone, req.body.id],
+		function (err) {
+			if (err) throw err;
+			console.log('task update where id: ' + req.body.id);
+		});
+	res.send(200);
+});
+
+app.post('/remove-task', function (req, res) {
+	connection.query('DELETE FROM Tasks WHERE id = ?', req.body.id, function (err) {
+			if (err) throw err;
+			console.log('task delete where id: ' + req.body.id);
+		});
+	res.send(200);
+});
+
 app.listen(3000, function (err) {
 	if(err) throw err;
 	console.log('Server start on port 3000!');

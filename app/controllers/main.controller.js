@@ -4,6 +4,7 @@ angular.module('Controllers', [])
 
 function mainCtrl($scope, TaskListFactory) {
 
+	$scope.toggle = false;
 	$scope.user = {
 		name: "Petro Zhuk",
 		tasks: TaskListFactory.getAllTasks()
@@ -13,5 +14,27 @@ function mainCtrl($scope, TaskListFactory) {
 		TaskListFactory.addTask(description);
 		$scope.description = null;
 	};
+	
+	$scope.updateTask = function () {
+		TaskListFactory.updateTask($scope.editTask);
+		$scope.toggle = false;
+	};
+
+	$scope.removeTask = function (index) {
+		TaskListFactory.removeTask(index);
+	};
+
+	$scope.isDone = function (task) {
+		TaskListFactory.isDone(task);
+	};
+
+	$scope.edit = function (editTask) {
+		$scope.editTask = {
+			id: editTask.id,
+			description: editTask.description,
+			isDone: editTask.isDone
+		};
+		$scope.toggle = true;
+	}
 
 };
