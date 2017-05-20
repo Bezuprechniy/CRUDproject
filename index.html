@@ -10,7 +10,7 @@
 <body>
     <div class="main" ng-controller="mainCtrl">
         <h1 class="user_name">User: {{user.name}}</h1>
-        <h3 class="task_count">Count of task: {{tasks.length}}</h3>
+        <h3 class="task_count">Count of task: {{user.tasks.length}}</h3>
         <div class="control_panel">
             <input type="text" ng-model="description" placeholder="Add new task...">
             <input type="button" value="Add" ng-click="addNewTask(description)">
@@ -24,10 +24,10 @@
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="key in tasks">
+                <tr ng-repeat="key in user.tasks">
                     <td>{{key.id}}</td>
                     <td>{{key.description}}</td>
-                    <td>{{key.status}}</td>
+                    <td>{{key.isDone}}</td>
                 </tr>
             </tbody>
         </table>

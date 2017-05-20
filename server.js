@@ -30,7 +30,23 @@ var initDb = function () {
 
 initDb();
 
-app.listen(3000, err => {
+app.get('/get-tasks', function(req, res){
+	connection.query('SELECT * FROM Tasks', function (err, rows) {
+		if (err) throw err;
+		console.log('get all task, length: ' + rows.length);
+		res.status(200).send(rows);
+	});
+});
+
+app.post('/add-task', function (req, res) {
+	connection.query('INSERT INTO Tasks SET ?', req.body, function (err, result) {
+			if (err) throw err;
+			console.log('task added to database with id: ' + result.insertId);
+		});
+	res.send(200);
+});
+
+app.listen(3000, function (err) {
 	if(err) throw err;
 	console.log('Server start on port 3000!');
 });
