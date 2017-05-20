@@ -45,6 +45,10 @@ function TaskListFactory($http) {
 	 * @param newTask String
 	 */
 	function addTask(newTask) {
+
+		if(!newTask){
+			return;
+		}
 		var task = {
 			description: newTask,
 			isDone: 0

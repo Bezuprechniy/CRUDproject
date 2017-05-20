@@ -1,0 +1,72 @@
+body {
+    background: #65abc7;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 24px;
+    color: azure;
+}
+
+.main {
+    width: 1200px;
+    margin: auto;
+}
+
+.header {
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    padding: 15px;
+    background-color: darkcyan;
+    box-shadow: 0 2px 2px black;
+    margin: 20px 0;
+}
+
+.user_name, .task_count {
+    margin-bottom: 15px;
+}
+
+.header_control_panel {
+    display: flex;
+    justify-content: space-around;
+}
+
+.description {
+    height: 150px;
+    width: 800px;
+    font-size: 20px;
+    resize: none;
+    box-shadow: 0 2px 2px black;
+    box-sizing: border-box;
+    padding: 10px;
+}
+
+.add_task {
+    width: 300px;
+    background-color: darkblue;
+    box-shadow: 0 2px 2px black;
+    border: none;
+    color: azure;
+    font-size: 24px;
+}
+
+.board {
+    display: flex;
+    flex-direction: column;
+}
+
+.board_body {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.ticket {
+    position: relative;
+    min-height: 250px;
+    width: 300px;
+    background-color: #1b406b;
+    box-sizing: border-box;
+    box-shadow: 0 2px 2px black;
+    padding: 20px;
+    margin-left: 40px;
+    margin-top: 10px;
+}

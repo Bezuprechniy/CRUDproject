@@ -5,42 +5,41 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="src/css/reset.css">
+    <link rel="stylesheet" href="src/css/main.css">
     <title>CRUD Project</title>
 </head>
 <body>
     <div class="main" ng-controller="mainCtrl">
-        <h1 class="user_name">User: {{user.name}}</h1>
-        <h3 class="task_count">Count of task: {{user.tasks.length}}</h3>
-        <div class="control_panel">
-            <input type="text" ng-model="description" placeholder="Add new task...">
-            <input type="button" value="Add" ng-click="addNewTask(description)">
+        <div class="header">
+            <div class="header_info">
+                <h1 class="user_name">User: {{user.name}}</h1>
+                <h3 class="task_count">Count of task: {{user.tasks.length}}</h3>
+            </div>
+            <div class="header_control_panel">
+                <textarea class="description" ng-model="description" placeholder="Add new task..."></textarea>
+                <input class="add_task" type="button" value="Add" ng-click="addNewTask(description)">
+            </div>
         </div>
-        <table class="all_tasks">
-            <thead>
-                <tr>
-                    <th>№</th>
-                    <th>Description</th>
-                    <th>IsDone</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr ng-repeat="key in user.tasks">
-                    <td>{{$index + 1}}</td>
-                    <td>{{key.description}}</td>
-                    <td><input type="checkbox" ng-model="key.isDone" ng-click="isDone(key)">
+        <div class="board">
+            <div class="board_body">
+                <div class="ticket" ng-repeat="key in user.tasks">
+                    <div>{{$index + 1}}</div>
+                    <div>{{key.description}}</div>
+                    <div><input type="checkbox" ng-model="key.isDone" ng-click="isDone(key)">
                         {{key.isDone ? 'Done' : 'In Progress'}}
-                    </td>
-                    <td><input type="button" value="Edit" ng-click="edit(key)"></td>
-                    <td><input type="button" value="Delete" ng-click="removeTask(key)"></td>
-                </tr>
-            </tbody>
-        </table>
+                    </div>
+                    <div><input type="button" value="Edit" ng-click="edit(key)"></div>
+                    <div><input type="button" value="Delete" ng-click="removeTask(key)"></div>
+                </div>
+            </div>
+        </div>
         <div class="edit-block" ng-if="toggle">
             <input type="text" ng-model="editTask.description">
             <input type="button" value="save" ng-click="updateTask()">
         </div>
     </div>
-    <script src="src/angular.min.js"></script>
+    <script src="src/js/angular.min.js"></script>
 
     <script src="app/services/main.service.js"></script>
     <script src="app/controllers/main.controller.js"></script>
